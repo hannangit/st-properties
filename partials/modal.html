@@ -1,0 +1,83 @@
+<div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title" hidden>
+  <div class="modal" role="document">
+    <div class="modal-hd">
+      <div>
+        <h3 id="m-title">Enquire about this room</h3>
+        <div class="psub" id="m-sub"></div>
+      </div>
+      <button type="button" class="x" id="m-close" aria-label="Close form">&#10005;</button>
+    </div>
+    <div class="modal-bd">
+      <form id="m-form" novalidate>
+        <div class="form-error" id="m-error" role="alert"></div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="m-fname">First name <span class="req">*</span></label>
+            <input id="m-fname" name="firstName" type="text" autocomplete="given-name" required aria-describedby="m-fname-err">
+            <p class="field-err" id="m-fname-err"></p>
+          </div>
+          <div class="field">
+            <label for="m-lname">Last name <span class="opt">(optional)</span></label>
+            <input id="m-lname" name="lastName" type="text" autocomplete="family-name">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="m-email">Email <span class="req">*</span></label>
+            <input id="m-email" name="email" type="email" autocomplete="email" required aria-describedby="m-email-err">
+            <p class="field-err" id="m-email-err"></p>
+          </div>
+          <div class="field">
+            <label for="m-phone">Phone <span class="opt">(optional)</span></label>
+            <input id="m-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+          </div>
+        </div>
+
+        <!-- Prospective tenants -->
+        <div class="field" data-audience="tenant">
+          <label for="m-date">Preferred move-in date <span class="opt">(optional)</span></label>
+          <input type="date" id="m-date" name="moveInDate">
+        </div>
+
+        <!-- Landlords registering a property -->
+        <div class="field" data-audience="landlord" hidden>
+          <label for="m-address">Property address <span class="req">*</span></label>
+          <input id="m-address" name="propertyAddress" type="text" autocomplete="street-address" aria-describedby="m-address-err" placeholder="Street and postcode">
+          <p class="field-err" id="m-address-err"></p>
+        </div>
+        <div class="form-row" data-audience="landlord" hidden>
+          <div class="field">
+            <label for="m-bedrooms">Bedrooms <span class="opt">(optional)</span></label>
+            <select id="m-bedrooms" name="bedrooms">
+              <option value="">Select…</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="m-available">Available from <span class="opt">(optional)</span></label>
+            <input type="date" id="m-available" name="propertyAvailableFrom">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="m-message" id="m-message-label">Message <span class="opt">(optional)</span></label>
+          <textarea id="m-message" name="message" rows="2"></textarea>
+        </div>
+
+        <input type="hidden" id="m-property">
+        <button class="btn btn-black" id="m-submit" type="submit" style="width:100%">Send enquiry</button>
+        <p class="note" id="m-note"></p>
+      </form>
+
+      <div class="success" id="m-success" role="status">
+        <div class="tick">&#10003;</div>
+        <h3 id="m-success-title">Enquiry sent</h3>
+        <p id="m-success-txt"></p>
+        <p id="m-success-next"></p>
+        <a class="btn btn-outline btn-sm u-mt-14" id="m-success-cta" href="/how-it-works.html">See how booking works &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div>
