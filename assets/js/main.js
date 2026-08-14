@@ -73,13 +73,37 @@ function initTabs() {
 }
 
 /* ---------- Navigation ---------- */
-function toggleMenu() {
+/* Mobile drawer. Class-driven so it can animate, with the page behind it
+   locked from scrolling while it is open. */
+function setMenu(open) {
   const m = document.getElementById('mmenu');
-  const burger = document.querySelector('.burger');
   if (!m) return;
-  const open = m.style.display === 'flex';
-  m.style.display = open ? 'none' : 'flex';
-  if (burger) burger.setAttribute('aria-expanded', String(!open));
+  const backdrop = document.getElementById('menu-backdrop');
+  const burger = document.querySelector('.burger');
+  m.classList.toggle('open', open);
+  if (backdrop) backdrop.classList.toggle('open', open);
+  if (burger) burger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+  if (open) {
+    const first = m.querySelector('.menu-close');
+    if (first) first.focus();
+  } else if (burger) {
+    burger.focus();
+  }
+}
+function menuIsOpen() {
+  const m = document.getElementById('mmenu');
+  return !!m && m.classList.contains('open');
+}
+function toggleMenu() { setMenu(!menuIsOpen()); }
+function initMobileMenu() {
+  const m = document.getElementById('mmenu');
+  if (!m) return;
+  // Any link tap inside the drawer should close it, including same-page anchors.
+  m.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && menuIsOpen()) setMenu(false); });
+  // Returning to desktop width must not leave the drawer stuck open.
+  window.addEventListener('resize', () => { if (window.innerWidth > 992 && menuIsOpen()) setMenu(false); });
 }
 function closeAllDropdowns() {
   document.querySelectorAll('.nav-item.open').forEach(i => {
@@ -158,6 +182,23 @@ function PropertyCard(p) {
   </article>`;
 }
 
+/* ---------- Town tiles (homepage) ----------
+   The homepage advertises places, not individual rooms; each tile deep-links
+   into the search page with the Location filter already applied. */
+function initTowns() {
+  const el = document.getElementById('towns');
+  if (!el) return;
+  const towns = townList();
+  el.innerHTML = towns.map(t => {
+    const n = townCount(t);
+    return `<a class="town-tile" href="${rootPath('find-a-home.html')}?town=${encodeURIComponent(t)}">
+      <span class="town-tile-name">${t}</span>
+      <span class="town-tile-sub">${n ? n + (n === 1 ? ' home' : ' homes') : 'View homes'}</span>
+      <span class="town-tile-go" aria-hidden="true">→</span>
+    </a>`;
+  }).join('');
+}
+
 /* ---------- Property search ---------- */
 function renderGrid(list) {
   const g = document.getElementById('grid');
@@ -224,6 +265,15 @@ function initSearch() {
   document.querySelectorAll('[data-filter]').forEach(el => el.addEventListener('change', applyFilters));
   const searchBtn = document.querySelector('[data-action="search"]');
   if (searchBtn) searchBtn.addEventListener('click', applyFilters);
+
+  // Deep link from a homepage town tile: /find-a-home.html?town=Milton%20Keynes
+  const town = new URLSearchParams(location.search).get('town');
+  const cityEl = document.getElementById('f-city');
+  if (town && cityEl && [...cityEl.options].some(o => o.value === town || o.text === town)) {
+    cityEl.value = town;
+    applyFilters();
+    return;
+  }
   renderGrid(PROPS);
 }
 
@@ -438,8 +488,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initIntro();
   initTheme();
   initNav();
+  initMobileMenu();
   initIcons();
   initTabs();
+  initTowns();
   initSearch();
   initAreaTabs();
 
@@ -449,7 +501,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!t) return;
     if (t.dataset.enquire) { openEnquiry(t.dataset.enquire); return; }
     switch (t.dataset.action) {
-      case 'toggle-menu':    toggleMenu(); break;
+      case "toggle-menu":    toggleMenu(); break;
+      case "close-menu":     setMenu(false); break;
       case 'clear-filters':  clearFilters(); break;
       case 'open-landlord':  openLL(); break;
     }

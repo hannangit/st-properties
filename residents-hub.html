@@ -33,17 +33,19 @@
     <a class="brand" href="index.html"><span class="mark">ST</span>ST Properties</a>
 
     <nav class="nav-links" aria-label="Primary">
-      <a href="index.html#search" data-nav="find">Find a Home</a>
+      <a href="find-a-home.html" data-nav="find">Find a Home</a>
       <a href="how-it-works.html" data-nav="how">How It Works</a>
 
+      <!-- Resident tools listed directly — the hub page is reachable from the
+           homepage and footer, so the menu goes straight to the tool. -->
       <div class="nav-item">
         <button type="button" class="nav-toggle" data-nav="residents" data-active="1" aria-expanded="false">Residents<span class="caret" aria-hidden="true">▾</span></button>
         <div class="nav-sub">
-          <a href="residents-hub.html">Resident Hub</a>
-          <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">Report a Repair</a>
-          <a href="area-guide.html">Area Guide</a>
+          <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">Maintenance</a>
+          <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">New Key Request</a>
           <a href="residents/guidelines.html">Tenant Guidelines</a>
           <a href="residents/complaints.html">Complaints &amp; Support</a>
+          <a href="residents-hub.html#emergency-contacts">Emergency Contacts</a>
         </div>
       </div>
 
@@ -56,14 +58,6 @@
         </div>
       </div>
 
-      <div class="nav-item">
-        <button type="button" class="nav-toggle" data-nav="about" aria-expanded="false">About<span class="caret" aria-hidden="true">▾</span></button>
-        <div class="nav-sub">
-          <a href="team.html">Our Team</a>
-          <a href="index.html#reviews">Reviews</a>
-        </div>
-      </div>
-
       <a href="index.html#contact" data-nav="contact">Contact</a>
     </nav>
 
@@ -72,27 +66,32 @@
         <button type="button" class="theme-pill" data-theme-set="day" aria-pressed="true">Day</button>
         <button type="button" class="theme-pill" data-theme-set="night" aria-pressed="false">Night</button>
       </div>
-      <a class="btn btn-black btn-sm nav-primary-cta" href="index.html#search">Find a Home</a>
       <button type="button" class="burger" data-action="toggle-menu" aria-label="Menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
     </div>
   </div>
 
-  <div class="mobile-menu" id="mmenu">
-    <a href="index.html#search">Find a Home</a>
+  <div class="menu-backdrop" id="menu-backdrop" data-action="close-menu" aria-hidden="true"></div>
+
+  <div class="mobile-menu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+    <button type="button" class="menu-close" data-action="close-menu" aria-label="Close menu">&#10005;</button>
+    <a href="find-a-home.html">Find a Home</a>
     <a href="how-it-works.html">How It Works</a>
     <span class="mm-group">Residents</span>
-    <a href="residents-hub.html">Resident Hub</a>
-    <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">Report a Repair</a>
-    <a href="area-guide.html">Area Guide</a>
+    <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">Maintenance</a>
+    <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">New Key Request</a>
     <a href="residents/guidelines.html">Tenant Guidelines</a>
     <a href="residents/complaints.html">Complaints &amp; Support</a>
+    <a href="residents-hub.html#emergency-contacts">Emergency Contacts</a>
     <span class="mm-group">Landlords</span>
     <a href="landlords.html">Guaranteed Rent</a>
     <a href="landlords.html#register">Register Your Property</a>
-    <span class="mm-group">About</span>
-    <a href="team.html">Our Team</a>
-    <a href="index.html#reviews">Reviews</a>
+    <span class="mm-group">More</span>
     <a href="index.html#contact">Contact</a>
+    <span class="mm-group">Appearance</span>
+    <div class="theme-switch" role="group" aria-label="Colour theme">
+      <button type="button" class="theme-pill" data-theme-set="day" aria-pressed="true">Day</button>
+      <button type="button" class="theme-pill" data-theme-set="night" aria-pressed="false">Night</button>
+    </div>
   </div>
 </header>
 <!-- @/header -->
@@ -117,9 +116,16 @@
 
       <a class="res-card" href="https://thestproperties.com/assistant" target="_blank" rel="noopener">
         <div class="ic" data-icon="heating" data-icon-size="22"></div>
-        <h4>Report a Repair</h4>
-        <p>Log a maintenance issue through our online reporting assistant.</p>
-        <span class="lk">Report a repair →</span>
+        <h4>Maintenance</h4>
+        <p>Log a repair or maintenance issue through our online reporting assistant.</p>
+        <span class="lk">Report an issue →</span>
+      </a>
+
+      <a class="res-card" href="https://thestproperties.com/assistant" target="_blank" rel="noopener">
+        <div class="ic" data-icon="key" data-icon-size="22"></div>
+        <h4>New Key Request</h4>
+        <p>Request a replacement or additional key for your room or front door.</p>
+        <span class="lk">Request a key →</span>
       </a>
 
       <a class="res-card" href="area-guide.html">
@@ -161,6 +167,21 @@
   </div>
 </section>
 
+<!-- Rent reporting — a resident benefit that is easy to miss -->
+<section class="block" id="credit-reporting">
+  <div class="wrap">
+    <div class="interest-cta">
+      <div class="interest-cta-body">
+        <span class="eyebrow">Did you know?</span>
+        <h2>Build your credit score with the rent you already pay.</h2>
+        <p>You can report your rent payments and improve your credit position with Experian, Equifax &amp; TransUnion through <strong>CreditLadder</strong>.</p>
+        <p class="disclaimer">CreditLadder is an independent third-party service and is not operated by or affiliated with ST Properties. You sign up with them directly, and their own terms and privacy policy apply.</p>
+      </div>
+      <a class="btn btn-black interest-cta-btn" href="https://creditladder.co.uk/" target="_blank" rel="noopener">Start Reporting with CreditLadder &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <!-- Emergency numbers, surfaced rather than buried -->
 <section class="block bg-cream" id="emergency-contacts">
   <div class="wrap">
@@ -197,14 +218,15 @@
   <div class="wrap">
     <div class="foot-grid">
       <div><div class="foot-brand"><span class="mark">ST</span>ST Properties</div><p>Serviced rooms and homes to rent — bills-included, resident-first, and easy to reach.</p></div>
-      <div><h5>Find a Home</h5><ul><li><a href="index.html#search">Search Homes</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="how-it-works.html#documents">What You'll Need</a></li></ul></div>
+      <div><h5>Find a Home</h5><ul><li><a href="find-a-home.html">Search Homes</a></li><li><a href="register-interest.html">Register Your Interest</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="how-it-works.html#documents">What You'll Need</a></li></ul></div>
       <div><h5>Residents</h5><ul><li><a href="residents-hub.html">Resident Hub</a></li><li><a href="area-guide.html">Area Guide</a></li><li><a href="residents/guidelines.html">Tenant Guidelines</a></li><li><a href="residents/complaints.html">Complaints &amp; Support</a></li></ul></div>
       <div><h5>Landlords</h5><ul><li><a href="landlords.html">Guaranteed Rent</a></li><li><a href="landlords.html#what-we-cover">What We Cover</a></li><li><a href="landlords.html#register">Register Your Property</a></li></ul></div>
-      <div><h5>Contact</h5><ul>
+      <div><h5>About</h5><ul>
+        <li><a href="team.html">Our Team</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
         <li><a href="tel:+447473434736">+44 7473 434736</a></li>
         <li><a href="mailto:info@thestproperties.co.uk">info@thestproperties.co.uk</a><br><span class="foot-note">General enquiries</span></li>
         <li><a href="mailto:complaints@thestproperties.co.uk">complaints@thestproperties.co.uk</a><br><span class="foot-note">Complaints &amp; feedback</span></li>
-        <li><a href="team.html">Our Team</a></li>
       </ul></div>
     </div>
     <div class="footer-legal">

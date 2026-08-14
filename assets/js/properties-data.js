@@ -47,32 +47,37 @@ function property(id, name, address, overrides) {
   }, overrides || {});
 }
 
-/* House numbers are deliberately omitted from names, addresses and URLs —
+/* ⚠ PLACEHOLDER TOWNS ⚠
+   The  on every property below is a randomly assigned stand-in so the
+   town tiles and the Location filter can be seen working. NONE of these are
+   confirmed. Replace each one with the property's real town before launch.
+
+   House numbers are deliberately omitted from names, addresses and URLs —
    the street is public-facing, the exact door number is not. Flat designations
    are kept only where they are needed to tell two listings on the same street
    apart, and are meaningless without the house number. */
 const PROPS = [
-  property('st-edmunds-flat-3',  'St Edmunds, Flat 3',  'St Edmunds'),
-  property('valais-grove',       'Valais Grove',        'Valais Grove'),
-  property('barrington-mews',    'Barrington Mews',     'Barrington Mews'),
-  property('darwin',             'Darwin',              'Darwin'),
-  property('st-edmunds-flat-1',  'St Edmunds, Flat 1',  'St Edmunds'),
-  property('southville',         'Southville',          'Southville'),
-  property('longhorn-drive',     'Longhorn Drive',      'Longhorn Drive'),
-  property('stratford-road',     'Stratford Road',      'Stratford Road'),
-  property('boycott',            'Boycott',             'Boycott'),
-  property('matthau-lane',       'Matthau Lane',        'Matthau Lane'),
-  property('crosslands',         'Crosslands',          'Crosslands'),
-  property('st-edmunds',         'St Edmunds',          'St Edmunds'),
-  property('chardacre',          'Chardacre',           'Chardacre'),
-  property('stoney-stanton',     'Stoney Stanton',      'Stoney Stanton'),
-  property('westfield-road',     'Westfield Road',      'Westfield Road'),
-  property('matthau',            'Matthau',             'Matthau'),
-  property('albany',             'Albany',              'Albany'),
-  property('percheron-place',    'Percheron Place',     'Percheron Place'),
-  property('hayton-way',         'Hayton Way',          'Hayton Way'),
-  property('haydock-close',      'Haydock Close',       'Haydock Close'),
-  property('tenor-close',        'Tenor Close',         'Tenor Close')
+  property('st-edmunds-flat-3',  'St Edmunds, Flat 3',  'St Edmunds', { city: 'Milton Keynes' }),
+  property('valais-grove',       'Valais Grove',        'Valais Grove', { city: 'Milton Keynes' }),
+  property('barrington-mews',    'Barrington Mews',     'Barrington Mews', { city: 'Northampton' }),
+  property('darwin',             'Darwin',              'Darwin', { city: 'Milton Keynes' }),
+  property('st-edmunds-flat-1',  'St Edmunds, Flat 1',  'St Edmunds', { city: 'Milton Keynes' }),
+  property('southville',         'Southville',          'Southville', { city: 'Coventry' }),
+  property('longhorn-drive',     'Longhorn Drive',      'Longhorn Drive', { city: 'Milton Keynes' }),
+  property('stratford-road',     'Stratford Road',      'Stratford Road', { city: 'Luton' }),
+  property('boycott',            'Boycott',             'Boycott', { city: 'Milton Keynes' }),
+  property('matthau-lane',       'Matthau Lane',        'Matthau Lane', { city: 'Northampton' }),
+  property('crosslands',         'Crosslands',          'Crosslands', { city: 'Milton Keynes' }),
+  property('st-edmunds',         'St Edmunds',          'St Edmunds', { city: 'Milton Keynes' }),
+  property('chardacre',          'Chardacre',           'Chardacre', { city: 'Northampton' }),
+  property('stoney-stanton',     'Stoney Stanton',      'Stoney Stanton', { city: 'Coventry' }),
+  property('westfield-road',     'Westfield Road',      'Westfield Road', { city: 'Luton' }),
+  property('matthau',            'Matthau',             'Matthau', { city: 'Northampton' }),
+  property('albany',             'Albany',              'Albany', { city: 'Coventry' }),
+  property('percheron-place',    'Percheron Place',     'Percheron Place', { city: 'Milton Keynes' }),
+  property('hayton-way',         'Hayton Way',          'Hayton Way', { city: 'Milton Keynes' }),
+  property('haydock-close',      'Haydock Close',       'Haydock Close', { city: 'Luton' }),
+  property('tenor-close',        'Tenor Close',         'Tenor Close', { city: 'Milton Keynes' })
 ];
 
 function money(n) { return '£' + n.toLocaleString(); }
@@ -92,6 +97,22 @@ function availabilityText(p) {
 function propValue(p, key) { return p[key] !== undefined && p[key] !== null ? p[key] : PROPERTY_DEFAULTS[key]; }
 function priceOf(p) { return p.room || p.whole || null; }
 function priceText(p) { return priceOf(p) ? money(priceOf(p)) : 'Rent on request'; }
+
+/* ─── Towns ───────────────────────────────────────────────────────────────
+   The homepage lists towns rather than individual properties. The list is
+   derived from the portfolio wherever `city` has been filled in; until then it
+   falls back to the towns confirmed by the client.
+
+   TODO (client): set `city` on each property above. Once every property has
+   one, this fallback stops being used and the Location filter switches on
+   automatically. */
+const TOWNS_FALLBACK = ['Milton Keynes'];
+
+function townList() {
+  const fromData = [...new Set(PROPS.map(p => p.city).filter(Boolean))].sort();
+  return fromData.length ? fromData : TOWNS_FALLBACK;
+}
+function townCount(name) { return PROPS.filter(p => p.city === name).length; }
 
 /* A filter is only shown once EVERY property has that field. Filtering on a
    partially-populated field would silently hide properties whose value is

@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Haydock Close | ST Properties</title>
-<meta name="description" content="Details for Haydock Close from ST Properties. Enquire for current rent, room type and availability.">
+<title>Find a Home | ST Properties</title>
+<meta name="description" content="Search every available ST Properties room and home. Filter by location, room type, price and bedrooms — bills included, fully furnished, ready to move into.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css">
 <script>try{var t=localStorage.getItem("st-theme");if(t==="hud"){t="night";localStorage.setItem("st-theme",t);}if(t==="night")document.documentElement.dataset.theme="night";}catch(e){}</script>
 </head>
-<body data-property="haydock-close">
+<body>
 
 <!-- @header -->
 <a class="skip-link" href="#main">Skip to content</a>
@@ -30,11 +30,11 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="../index.html"><span class="mark">ST</span>ST Properties</a>
+    <a class="brand" href="index.html"><span class="mark">ST</span>ST Properties</a>
 
     <nav class="nav-links" aria-label="Primary">
-      <a href="../find-a-home.html" data-nav="find" data-active="1">Find a Home</a>
-      <a href="../how-it-works.html" data-nav="how">How It Works</a>
+      <a href="find-a-home.html" data-nav="find" data-active="1">Find a Home</a>
+      <a href="how-it-works.html" data-nav="how">How It Works</a>
 
       <!-- Resident tools listed directly — the hub page is reachable from the
            homepage and footer, so the menu goes straight to the tool. -->
@@ -43,22 +43,22 @@
         <div class="nav-sub">
           <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">Maintenance</a>
           <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">New Key Request</a>
-          <a href="../residents/guidelines.html">Tenant Guidelines</a>
-          <a href="../residents/complaints.html">Complaints &amp; Support</a>
-          <a href="../residents-hub.html#emergency-contacts">Emergency Contacts</a>
+          <a href="residents/guidelines.html">Tenant Guidelines</a>
+          <a href="residents/complaints.html">Complaints &amp; Support</a>
+          <a href="residents-hub.html#emergency-contacts">Emergency Contacts</a>
         </div>
       </div>
 
       <div class="nav-item">
         <button type="button" class="nav-toggle" data-nav="landlords" aria-expanded="false">Landlords<span class="caret" aria-hidden="true">▾</span></button>
         <div class="nav-sub">
-          <a href="../landlords.html">Guaranteed Rent</a>
-          <a href="../landlords.html#what-we-cover">What We Cover</a>
-          <a href="../landlords.html#register">Register Your Property</a>
+          <a href="landlords.html">Guaranteed Rent</a>
+          <a href="landlords.html#what-we-cover">What We Cover</a>
+          <a href="landlords.html#register">Register Your Property</a>
         </div>
       </div>
 
-      <a href="../index.html#contact" data-nav="contact">Contact</a>
+      <a href="index.html#contact" data-nav="contact">Contact</a>
     </nav>
 
     <div class="nav-cta">
@@ -74,19 +74,19 @@
 
   <div class="mobile-menu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
     <button type="button" class="menu-close" data-action="close-menu" aria-label="Close menu">&#10005;</button>
-    <a href="../find-a-home.html">Find a Home</a>
-    <a href="../how-it-works.html">How It Works</a>
+    <a href="find-a-home.html">Find a Home</a>
+    <a href="how-it-works.html">How It Works</a>
     <span class="mm-group">Residents</span>
     <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">Maintenance</a>
     <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">New Key Request</a>
-    <a href="../residents/guidelines.html">Tenant Guidelines</a>
-    <a href="../residents/complaints.html">Complaints &amp; Support</a>
-    <a href="../residents-hub.html#emergency-contacts">Emergency Contacts</a>
+    <a href="residents/guidelines.html">Tenant Guidelines</a>
+    <a href="residents/complaints.html">Complaints &amp; Support</a>
+    <a href="residents-hub.html#emergency-contacts">Emergency Contacts</a>
     <span class="mm-group">Landlords</span>
-    <a href="../landlords.html">Guaranteed Rent</a>
-    <a href="../landlords.html#register">Register Your Property</a>
+    <a href="landlords.html">Guaranteed Rent</a>
+    <a href="landlords.html#register">Register Your Property</a>
     <span class="mm-group">More</span>
-    <a href="../index.html#contact">Contact</a>
+    <a href="index.html#contact">Contact</a>
     <span class="mm-group">Appearance</span>
     <div class="theme-switch" role="group" aria-label="Colour theme">
       <button type="button" class="theme-pill" data-theme-set="day" aria-pressed="true">Day</button>
@@ -98,22 +98,59 @@
 
 <main id="main">
 
-<section class="block u-pb-0">
-  <div class="wrap">
-    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a> / <a href="../find-a-home.html">Find a Home</a> / <span id="bc-title">Loading…</span></nav>
-    <div class="gallery" id="gallery"></div>
-    <div class="detail-grid">
-      <div class="detail-info" id="info"></div>
-      <div class="sidebar-card" id="sidebar"></div>
-    </div>
-    <div id="detail-cta" class="u-mt-44"></div>
+<section class="subhero">
+  <div class="wrap in">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Find a Home</span></nav>
+    <span class="eyebrow">Available Homes</span>
+    <h1>Find a home.</h1>
+    <p>Bills included, fully furnished, ready to move into. Filter the list below, or get in touch about any property that looks right.</p>
   </div>
 </section>
 
-<section class="block bg-cream u-mt-60">
+<section class="block" id="search">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">More rooms nearby</span><h2>Other homes you might like</h2></div>
-    <div class="prop-grid" id="similar"></div>
+
+    <div class="searchbar searchbar--inline">
+      <div class="control-group"><label for="f-city">Location</label>
+        <select id="f-city" data-filter>
+          <option value="">All areas</option><option>Milton Keynes</option><option>Northampton</option><option>Luton</option><option>Coventry</option>
+        </select></div>
+      <div class="control-group"><label for="f-type">Room type</label>
+        <select id="f-type" data-filter>
+          <option value="">Any type</option><option>Single</option><option>Double</option><option>En-suite</option><option>Whole home</option>
+        </select></div>
+      <div class="control-group"><label for="f-price">Max price / mo</label>
+        <select id="f-price" data-filter>
+          <option value="99999">Any price</option><option value="600">Up to £600</option><option value="800">Up to £800</option><option value="1200">Up to £1,200</option><option value="2500">Up to £2,500</option>
+        </select></div>
+      <div class="control-group"><label for="f-beds">Bedrooms</label>
+        <select id="f-beds" data-filter>
+          <option value="0">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option>
+        </select></div>
+      <button class="btn btn-black" type="button" data-action="search">Search</button>
+    </div>
+
+    <p class="sub" id="search-note" hidden>Rent, room type and availability are confirmed on enquiry &mdash; send us a message about any property below.</p>
+
+    <div class="results-head u-mt-36">
+      <h3>Available homes</h3>
+      <span class="count" id="count" role="status" aria-live="polite"></span>
+    </div>
+    <div class="prop-grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- Catch-all for anyone the current list doesn't suit -->
+<section class="block bg-cream">
+  <div class="wrap">
+    <div class="interest-cta">
+      <div class="interest-cta-body">
+        <span class="eyebrow">Nothing quite right?</span>
+        <h2>Register your interest.</h2>
+        <p>Tell us what you're looking for and we'll contact you first when something matching becomes available &mdash; including homes that never make it onto the site.</p>
+      </div>
+      <a class="btn btn-black interest-cta-btn" href="register-interest.html">Register your interest &rarr;</a>
+    </div>
   </div>
 </section>
 
@@ -124,12 +161,12 @@
   <div class="wrap">
     <div class="foot-grid">
       <div><div class="foot-brand"><span class="mark">ST</span>ST Properties</div><p>Serviced rooms and homes to rent — bills-included, resident-first, and easy to reach.</p></div>
-      <div><h5>Find a Home</h5><ul><li><a href="../find-a-home.html">Search Homes</a></li><li><a href="../register-interest.html">Register Your Interest</a></li><li><a href="../how-it-works.html">How It Works</a></li><li><a href="../how-it-works.html#documents">What You'll Need</a></li></ul></div>
-      <div><h5>Residents</h5><ul><li><a href="../residents-hub.html">Resident Hub</a></li><li><a href="../area-guide.html">Area Guide</a></li><li><a href="../residents/guidelines.html">Tenant Guidelines</a></li><li><a href="../residents/complaints.html">Complaints &amp; Support</a></li></ul></div>
-      <div><h5>Landlords</h5><ul><li><a href="../landlords.html">Guaranteed Rent</a></li><li><a href="../landlords.html#what-we-cover">What We Cover</a></li><li><a href="../landlords.html#register">Register Your Property</a></li></ul></div>
+      <div><h5>Find a Home</h5><ul><li><a href="find-a-home.html">Search Homes</a></li><li><a href="register-interest.html">Register Your Interest</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="how-it-works.html#documents">What You'll Need</a></li></ul></div>
+      <div><h5>Residents</h5><ul><li><a href="residents-hub.html">Resident Hub</a></li><li><a href="area-guide.html">Area Guide</a></li><li><a href="residents/guidelines.html">Tenant Guidelines</a></li><li><a href="residents/complaints.html">Complaints &amp; Support</a></li></ul></div>
+      <div><h5>Landlords</h5><ul><li><a href="landlords.html">Guaranteed Rent</a></li><li><a href="landlords.html#what-we-cover">What We Cover</a></li><li><a href="landlords.html#register">Register Your Property</a></li></ul></div>
       <div><h5>About</h5><ul>
-        <li><a href="../team.html">Our Team</a></li>
-        <li><a href="../index.html#reviews">Reviews</a></li>
+        <li><a href="team.html">Our Team</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
         <li><a href="tel:+447473434736">+44 7473 434736</a></li>
         <li><a href="mailto:info@thestproperties.co.uk">info@thestproperties.co.uk</a><br><span class="foot-note">General enquiries</span></li>
         <li><a href="mailto:complaints@thestproperties.co.uk">complaints@thestproperties.co.uk</a><br><span class="foot-note">Complaints &amp; feedback</span></li>
@@ -145,7 +182,6 @@
   </div>
 </footer>
 <!-- @/footer -->
-
 
 <!-- @modal -->
 <div class="modal-bg" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title" hidden>
@@ -226,17 +262,16 @@
         <h3 id="m-success-title">Enquiry sent</h3>
         <p id="m-success-txt"></p>
         <p id="m-success-next"></p>
-        <a class="btn btn-outline btn-sm u-mt-14" id="m-success-cta" href="../how-it-works.html">See how booking works &rarr;</a>
+        <a class="btn btn-outline btn-sm u-mt-14" id="m-success-cta" href="how-it-works.html">See how booking works &rarr;</a>
       </div>
     </div>
   </div>
 </div>
 <!-- @/modal -->
 
-<script src="../assets/js/icons.js"></script>
-<script src="../assets/js/config.js"></script>
-<script src="../assets/js/properties-data.js"></script>
-<script src="../assets/js/main.js"></script>
-<script src="../assets/js/property-detail.js"></script>
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/properties-data.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
