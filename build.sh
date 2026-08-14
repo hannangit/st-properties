@@ -56,11 +56,10 @@ for f in $PAGES; do
 
   # ---- Which primary nav item is current ----
   case "$f" in
-    index.html)                  ACTIVE="find" ;;
+    find-a-home.html)            ACTIVE="find" ;;
     how-it-works.html)           ACTIVE="how" ;;
     residents/*|residents-hub.html|area-guide.html) ACTIVE="residents" ;;
     landlords.html)              ACTIVE="landlords" ;;
-    team.html)                   ACTIVE="about" ;;
     properties/*)                ACTIVE="find" ;;
     *)                           ACTIVE="" ;;
   esac
@@ -83,7 +82,7 @@ for f in $PAGES; do
     my $b = $ENV{BASE};
     my $P = qr{(?:(?:\.\./)+|/(?:[A-Za-z0-9._-]+/)*)?};
     s{href="$P((?:residents|properties)/[A-Za-z0-9._-]+\.html)}{href="\x01$1}g;
-    s{href="$P((?:index|how-it-works|area-guide|landlords|team|residents-hub)\.html)}{href="\x01$1}g;
+    s{href="$P((?:index|how-it-works|area-guide|landlords|team|residents-hub|find-a-home|register-interest)\.html)}{href="\x01$1}g;
     s{(href|src)="$P(assets/)}{$1="\x01$2}g;
     s{\x01}{$b}g;
   ' "$f"

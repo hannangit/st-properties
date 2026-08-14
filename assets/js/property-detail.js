@@ -3,7 +3,7 @@ function renderPropertyPage(id) {
   const p = propById(id);
   if (!p) {
     document.querySelector('main .wrap').innerHTML =
-      '<p>Sorry, we couldn\'t find that listing. <a href="' + rootPath('index.html#search') + '">Back to all homes &rarr;</a></p>';
+      '<p>Sorry, we couldn\'t find that listing. <a href="' + rootPath('find-a-home.html') + '">Back to all homes &rarr;</a></p>';
     return;
   }
 

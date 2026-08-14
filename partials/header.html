@@ -17,17 +17,19 @@
     <a class="brand" href="/index.html"><span class="mark">ST</span>ST Properties</a>
 
     <nav class="nav-links" aria-label="Primary">
-      <a href="/index.html#search" data-nav="find">Find a Home</a>
+      <a href="/find-a-home.html" data-nav="find">Find a Home</a>
       <a href="/how-it-works.html" data-nav="how">How It Works</a>
 
+      <!-- Resident tools listed directly — the hub page is reachable from the
+           homepage and footer, so the menu goes straight to the tool. -->
       <div class="nav-item">
         <button type="button" class="nav-toggle" data-nav="residents" aria-expanded="false">Residents<span class="caret" aria-hidden="true">▾</span></button>
         <div class="nav-sub">
-          <a href="/residents-hub.html">Resident Hub</a>
-          <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">Report a Repair</a>
-          <a href="/area-guide.html">Area Guide</a>
+          <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">Maintenance</a>
+          <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">New Key Request</a>
           <a href="/residents/guidelines.html">Tenant Guidelines</a>
           <a href="/residents/complaints.html">Complaints &amp; Support</a>
+          <a href="/residents-hub.html#emergency-contacts">Emergency Contacts</a>
         </div>
       </div>
 
@@ -40,14 +42,6 @@
         </div>
       </div>
 
-      <div class="nav-item">
-        <button type="button" class="nav-toggle" data-nav="about" aria-expanded="false">About<span class="caret" aria-hidden="true">▾</span></button>
-        <div class="nav-sub">
-          <a href="/team.html">Our Team</a>
-          <a href="/index.html#reviews">Reviews</a>
-        </div>
-      </div>
-
       <a href="/index.html#contact" data-nav="contact">Contact</a>
     </nav>
 
@@ -56,26 +50,31 @@
         <button type="button" class="theme-pill" data-theme-set="day" aria-pressed="true">Day</button>
         <button type="button" class="theme-pill" data-theme-set="night" aria-pressed="false">Night</button>
       </div>
-      <a class="btn btn-black btn-sm nav-primary-cta" href="/index.html#search">Find a Home</a>
       <button type="button" class="burger" data-action="toggle-menu" aria-label="Menu" aria-expanded="false" aria-controls="mmenu"><span></span><span></span><span></span></button>
     </div>
   </div>
 
-  <div class="mobile-menu" id="mmenu">
-    <a href="/index.html#search">Find a Home</a>
+  <div class="menu-backdrop" id="menu-backdrop" data-action="close-menu" aria-hidden="true"></div>
+
+  <div class="mobile-menu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+    <button type="button" class="menu-close" data-action="close-menu" aria-label="Close menu">&#10005;</button>
+    <a href="/find-a-home.html">Find a Home</a>
     <a href="/how-it-works.html">How It Works</a>
     <span class="mm-group">Residents</span>
-    <a href="/residents-hub.html">Resident Hub</a>
-    <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">Report a Repair</a>
-    <a href="/area-guide.html">Area Guide</a>
+    <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">Maintenance</a>
+    <a href="https://thestproperties.com/assistant" target="_blank" rel="noopener">New Key Request</a>
     <a href="/residents/guidelines.html">Tenant Guidelines</a>
     <a href="/residents/complaints.html">Complaints &amp; Support</a>
+    <a href="/residents-hub.html#emergency-contacts">Emergency Contacts</a>
     <span class="mm-group">Landlords</span>
     <a href="/landlords.html">Guaranteed Rent</a>
     <a href="/landlords.html#register">Register Your Property</a>
-    <span class="mm-group">About</span>
-    <a href="/team.html">Our Team</a>
-    <a href="/index.html#reviews">Reviews</a>
+    <span class="mm-group">More</span>
     <a href="/index.html#contact">Contact</a>
+    <span class="mm-group">Appearance</span>
+    <div class="theme-switch" role="group" aria-label="Colour theme">
+      <button type="button" class="theme-pill" data-theme-set="day" aria-pressed="true">Day</button>
+      <button type="button" class="theme-pill" data-theme-set="night" aria-pressed="false">Night</button>
+    </div>
   </div>
 </header>
