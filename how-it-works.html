@@ -16,6 +16,22 @@
 <!-- @header -->
 <a class="skip-link" href="#main">Skip to content</a>
 
+<!-- Thin promo ticker. The track holds two identical runs of the message and
+     slides exactly half its width, so the loop is seamless with no jump.
+     aria-hidden on the duplicate keeps screen readers from hearing it twice. -->
+<div class="promo-bar">
+  <div class="promo-track">
+    <span class="promo-run">
+      <span class="promo-msg"><span class="promo-dot"></span>Move in with 50% deposit &mdash; pay the rest later</span>
+      <span class="promo-msg"><span class="promo-dot"></span>Bills included &middot; Fully furnished &middot; Ready to move into</span>
+    </span>
+    <span class="promo-run" aria-hidden="true">
+      <span class="promo-msg"><span class="promo-dot"></span>Move in with 50% deposit &mdash; pay the rest later</span>
+      <span class="promo-msg"><span class="promo-dot"></span>Bills included &middot; Fully furnished &middot; Ready to move into</span>
+    </span>
+  </div>
+</div>
+
 <a class="wa" href="https://wa.me/447473434736" target="_blank" rel="noopener" aria-label="Message ST Properties on WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94
@@ -70,9 +86,14 @@
     </div>
   </div>
 
-  <div class="menu-backdrop" id="menu-backdrop" data-action="close-menu" aria-hidden="true"></div>
+</header>
 
-  <div class="mobile-menu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+<!-- The drawer and its backdrop MUST stay outside <header>. The header carries
+     backdrop-filter, which makes it the containing block for any position:fixed
+     descendant — nesting these inside it clips them to the header's height. -->
+<div class="menu-backdrop" id="menu-backdrop" data-action="close-menu" aria-hidden="true"></div>
+
+<div class="mobile-menu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
     <button type="button" class="menu-close" data-action="close-menu" aria-label="Close menu">&#10005;</button>
     <a href="find-a-home.html">Find a Home</a>
     <a href="how-it-works.html">How It Works</a>
@@ -87,13 +108,22 @@
     <a href="landlords.html#register">Register Your Property</a>
     <span class="mm-group">More</span>
     <a href="index.html#contact">Contact</a>
-    <span class="mm-group">Appearance</span>
-    <div class="theme-switch" role="group" aria-label="Colour theme">
-      <button type="button" class="theme-pill" data-theme-set="day" aria-pressed="true">Day</button>
-      <button type="button" class="theme-pill" data-theme-set="night" aria-pressed="false">Night</button>
-    </div>
+  <span class="mm-group">Appearance</span>
+  <div class="theme-switch" role="group" aria-label="Colour theme">
+    <button type="button" class="theme-pill" data-theme-set="day" aria-pressed="true">Day</button>
+    <button type="button" class="theme-pill" data-theme-set="night" aria-pressed="false">Night</button>
   </div>
-</header>
+</div>
+
+<!-- Deposit offer card. Held back a few seconds so it doesn't compete with the
+     page load, and dismissal is remembered for the session. -->
+<aside class="promo-pop" id="promo-pop" role="complementary" aria-label="Current offer" hidden>
+  <button type="button" class="promo-pop-x" data-action="close-promo" aria-label="Dismiss offer">&#10005;</button>
+  <span class="promo-pop-badge"><span class="promo-dot"></span>Limited offer</span>
+  <p class="promo-pop-title">Move in with <strong>50% deposit</strong></p>
+  <p class="promo-pop-sub">Pay the rest later. Ask us how when you enquire.</p>
+  <a class="btn btn-black btn-sm promo-pop-cta" href="find-a-home.html">Find a home &rarr;</a>
+</aside>
 <!-- @/header -->
 
 <main id="main">
