@@ -182,6 +182,33 @@ function PropertyCard(p) {
   </article>`;
 }
 
+/* ---------- Promo offer card ----------
+   Held back so it doesn't land on top of the page load or the intro splash,
+   and stays dismissed for the rest of the session once closed. */
+const PROMO_KEY = 'st-promo-dismissed';
+function closePromo() {
+  const el = document.getElementById('promo-pop');
+  if (!el) return;
+  el.classList.remove('show');
+  setTimeout(() => { el.hidden = true; }, 450);   // matches the CSS transition
+  try { sessionStorage.setItem(PROMO_KEY, '1'); } catch (e) { /* private mode */ }
+}
+function initPromo() {
+  const el = document.getElementById('promo-pop');
+  if (!el) return;
+  try { if (sessionStorage.getItem(PROMO_KEY)) return; } catch (e) { /* private mode */ }
+
+  // Wait out the intro splash on pages that run one.
+  const introRunning = document.documentElement.classList.contains('intro-active');
+  setTimeout(() => {
+    el.hidden = false;
+    // Short timer rather than requestAnimationFrame: rAF is throttled in
+    // background tabs, and the card must become visible either way — losing
+    // the fade is acceptable, never showing up is not.
+    setTimeout(() => el.classList.add('show'), 20);
+  }, introRunning ? 5200 : 3000);
+}
+
 /* ---------- Town tiles (homepage) ----------
    The homepage advertises places, not individual rooms; each tile deep-links
    into the search page with the Location filter already applied. */
@@ -489,6 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initNav();
   initMobileMenu();
+  initPromo();
   initIcons();
   initTabs();
   initTowns();
@@ -503,6 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
     switch (t.dataset.action) {
       case "toggle-menu":    toggleMenu(); break;
       case "close-menu":     setMenu(false); break;
+      case "close-promo":    closePromo(); break;
       case 'clear-filters':  clearFilters(); break;
       case 'open-landlord':  openLL(); break;
     }
