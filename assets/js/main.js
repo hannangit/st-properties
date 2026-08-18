@@ -182,6 +182,36 @@ function PropertyCard(p) {
   </article>`;
 }
 
+/* ---------- Floating WhatsApp widget ----------
+   The launcher opens a small card rather than jumping straight to WhatsApp,
+   so visitors see who they are messaging before they leave the site. */
+function setWaCard(open) {
+  const card = document.getElementById('waCard');
+  if (!card) return;
+  card.classList.toggle('is-visible', open);
+  const btn = document.querySelector('.wa-icon-btn');
+  if (btn) btn.setAttribute('aria-expanded', String(open));
+  // On a phone the chat card lands on top of the offer nudge, so step it aside.
+  const promo = document.getElementById('promo-pop');
+  if (promo) promo.classList.toggle('is-suppressed', open);
+}
+function toggleWaCard() {
+  const card = document.getElementById('waCard');
+  if (card) setWaCard(!card.classList.contains('is-visible'));
+}
+function initWaWidget() {
+  const card = document.getElementById('waCard');
+  if (!card) return;
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && card.classList.contains('is-visible')) setWaCard(false);
+  });
+  // Clicking anywhere else on the page dismisses it.
+  document.addEventListener('click', e => {
+    if (!card.classList.contains('is-visible')) return;
+    if (!e.target.closest('.wa-widget-container')) setWaCard(false);
+  });
+}
+
 /* ---------- Promo offer card ----------
    Held back so it doesn't land on top of the page load or the intro splash,
    and stays dismissed for the rest of the session once closed. */
@@ -517,6 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initMobileMenu();
   initPromo();
+  initWaWidget();
   initIcons();
   initTabs();
   initTowns();
@@ -532,6 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
       case "toggle-menu":    toggleMenu(); break;
       case "close-menu":     setMenu(false); break;
       case "close-promo":    closePromo(); break;
+      case "toggle-wa":      toggleWaCard(); break;
       case 'clear-filters':  clearFilters(); break;
       case 'open-landlord':  openLL(); break;
     }
