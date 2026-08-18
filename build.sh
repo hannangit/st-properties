@@ -82,7 +82,7 @@ for f in $PAGES; do
     my $b = $ENV{BASE};
     my $P = qr{(?:(?:\.\./)+|/(?:[A-Za-z0-9._-]+/)*)?};
     s{href="$P((?:residents|properties)/[A-Za-z0-9._-]+\.html)}{href="\x01$1}g;
-    s{href="$P((?:index|how-it-works|area-guide|landlords|team|residents-hub|find-a-home|register-interest)\.html)}{href="\x01$1}g;
+    s{href="$P((?:index|how-it-works|area-guide|landlords|team|residents-hub|find-a-home|register-interest|request-a-callback)\.html)}{href="\x01$1}g;
     s{(href|src)="$P(assets/)}{$1="\x01$2}g;
     s{\x01}{$b}g;
   ' "$f"

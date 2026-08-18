@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Find a Home | ST Properties</title>
-<meta name="description" content="Search every available ST Properties room and home. Filter by location, room type, price and bedrooms — bills included, fully furnished, ready to move into.">
+<title>Request a Callback | ST Properties</title>
+<meta name="description" content="Book a phone call with the ST Properties team. Pick a time that suits you and we'll call you — for viewings, availability, or landlord enquiries.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
     <a class="brand" href="index.html"><span class="mark">ST</span>ST Properties</a>
 
     <nav class="nav-links" aria-label="Primary">
-      <a href="find-a-home.html" data-nav="find" data-active="1">Find a Home</a>
+      <a href="find-a-home.html" data-nav="find">Find a Home</a>
       <a href="how-it-works.html" data-nav="how">How It Works</a>
 
       <!-- Resident tools listed directly — the hub page is reachable from the
@@ -150,59 +150,53 @@
 
 <section class="subhero">
   <div class="wrap in">
-    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Find a Home</span></nav>
-    <span class="eyebrow">Available Homes</span>
-    <h1>Find a home.</h1>
-    <p>Bills included, fully furnished, ready to move into. Filter the list below, or get in touch about any property that looks right.</p>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Request a Callback</span></nav>
+    <span class="eyebrow">Speak to the team</span>
+    <h1>Request a callback.</h1>
+    <p>Pick a slot that suits you and we'll call you back. Useful for arranging a viewing, checking availability, or talking through a property you'd like us to manage.</p>
   </div>
 </section>
 
-<section class="block" id="search">
+<section class="block">
   <div class="wrap">
-
-    <div class="searchbar searchbar--inline">
-      <div class="control-group"><label for="f-city">Location</label>
-        <select id="f-city" data-filter>
-          <option value="">All areas</option><option>Milton Keynes</option><option>Northampton</option><option>Luton</option><option>Coventry</option>
-        </select></div>
-      <div class="control-group"><label for="f-type">Room type</label>
-        <select id="f-type" data-filter>
-          <option value="">Any type</option><option>Single</option><option>Double</option><option>En-suite</option><option>Whole home</option>
-        </select></div>
-      <div class="control-group"><label for="f-price">Max price / mo</label>
-        <select id="f-price" data-filter>
-          <option value="99999">Any price</option><option value="600">Up to £600</option><option value="800">Up to £800</option><option value="1200">Up to £1,200</option><option value="2500">Up to £2,500</option>
-        </select></div>
-      <div class="control-group"><label for="f-beds">Bedrooms</label>
-        <select id="f-beds" data-filter>
-          <option value="0">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option>
-        </select></div>
-      <button class="btn btn-black" type="button" data-action="search">Search</button>
+    <!-- Google Calendar Appointment Scheduling begin -->
+    <div class="sched-embed">
+      <iframe
+        src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ14jPJMl8j2kWt-dCQN-aNsnv_faKISNEdi9vgKU1nZW_O4Qcadl31JR0nQRBzWkrsYQOhJk8wM?gv=true"
+        title="Book a phone call with ST Properties"
+        loading="lazy"
+        frameborder="0">Loading&hellip;</iframe>
     </div>
-
-    <p class="sub" id="search-note" hidden>Rent, room type and availability are confirmed on enquiry &mdash; send us a message about any property below.</p>
-
-    <div class="results-head u-mt-36">
-      <h3>Available homes</h3>
-      <span class="count" id="count" role="status" aria-live="polite"></span>
-    </div>
-    <div class="prop-grid" id="grid"></div>
+    <!-- end Google Calendar Appointment Scheduling -->
+    <p class="sub form-embed-fallback">
+      Scheduler not loading? <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ14jPJMl8j2kWt-dCQN-aNsnv_faKISNEdi9vgKU1nZW_O4Qcadl31JR0nQRBzWkrsYQOhJk8wM?gv=true" target="_blank" rel="noopener">Open it in a new tab</a>,
+      call us on <a href="tel:+447473434736">+44 7473 434736</a>, or message us on <a href="https://wa.me/447473434736" target="_blank" rel="noopener">WhatsApp</a>.
+    </p>
   </div>
 </section>
 
-<!-- Catch-all for anyone the current list doesn't suit -->
 <section class="block bg-cream">
   <div class="wrap">
-    <div class="interest-cta">
-      <div class="interest-cta-body">
-        <span class="eyebrow">Nothing quite right?</span>
-        <h2>Register your interest.</h2>
-        <p>Tell us what you're looking for and we'll contact you first when something matching becomes available &mdash; including homes that never make it onto the site.</p>
-      </div>
-      <div class="interest-cta-actions">
-        <a class="btn btn-black" href="register-interest.html">Register your interest &rarr;</a>
-        <a class="btn btn-outline" href="request-a-callback.html">Request a callback</a>
-      </div>
+    <div class="sec-head"><h2>Prefer not to wait?</h2></div>
+    <div class="res-grid">
+      <a class="res-card" href="https://wa.me/447473434736" target="_blank" rel="noopener">
+        <div class="ic" data-icon="info" data-icon-size="22"></div>
+        <h4>Message on WhatsApp</h4>
+        <p>Usually the quickest way to reach us.</p>
+        <span class="lk">Open WhatsApp &rarr;</span>
+      </a>
+      <a class="res-card" href="find-a-home.html">
+        <div class="ic" data-icon="key" data-icon-size="22"></div>
+        <h4>Browse available homes</h4>
+        <p>See everything currently on the list.</p>
+        <span class="lk">View homes &rarr;</span>
+      </a>
+      <a class="res-card" href="register-interest.html">
+        <div class="ic" data-icon="calendar" data-icon-size="22"></div>
+        <h4>Register your interest</h4>
+        <p>Hear first about future availability.</p>
+        <span class="lk">Register &rarr;</span>
+      </a>
     </div>
   </div>
 </section>

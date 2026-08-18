@@ -419,14 +419,64 @@ footer ul a:hover{color:var(--color-quicksand)}
 .foot-bottom{padding-top:4px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:rgba(245,240,233,.45)}
 .footer-copyright{color:rgba(245,240,233,.5)}
 
-.wa{position:fixed;right:20px;bottom:20px;z-index:200;display:inline-flex;align-items:center;gap:.55rem;padding:.7rem 1.1rem;border-radius:100px;background:#1da851;color:#fff;font-weight:600;font-size:.9rem;box-shadow:var(--shadow-hover);transition:var(--transition-fast)}
-.wa svg{width:22px;height:22px;flex:none}
-.wa:hover{background:#179044;transform:translateY(-2px)}
-.wa:focus-visible{outline:3px solid var(--color-ink-primary);outline-offset:3px}
-@media(max-width:992px){
-  /* icon-only on small screens, kept clear of full-width CTAs and form controls */
-  .wa{right:14px;bottom:14px;padding:0;width:52px;height:52px;justify-content:center}
-  .wa-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* ---- Floating WhatsApp widget ----
+   Launcher plus an expanding chat card. Kept at z-index 200 so it sits above
+   the page but below the mobile drawer (220) and the enquiry modal (300) —
+   otherwise it floats over both. */
+.wa-widget-container{position:fixed;right:20px;bottom:20px;z-index:200;
+  display:flex;flex-direction:column;align-items:flex-end}
+
+.wa-card{width:min(300px,calc(100vw - 40px));background:#f0f2f5;border-radius:16px;overflow:hidden;
+  box-shadow:0 12px 32px rgba(17,34,80,.22);margin-bottom:12px;
+  transform-origin:bottom right;
+  opacity:0;visibility:hidden;transform:translateY(10px) scale(.96);
+  transition:opacity .22s ease,transform .22s cubic-bezier(.2,0,0,1),visibility .22s}
+.wa-card.is-visible{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+
+.wa-header{background:#008a7c;color:#fff;padding:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.wa-profile-info strong{display:block;font-size:1rem;font-family:var(--font-sans)}
+.wa-profile-info span{font-size:.75rem;opacity:.9}
+.wa-close-btn{position:relative;background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:50%;
+  width:32px;height:32px;flex:none;display:grid;place-items:center;font-size:1.1rem;line-height:1;cursor:pointer}
+/* Keep the circle visually small but give it a full 44px tap target. */
+.wa-close-btn::after{content:"";position:absolute;top:50%;left:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
+.wa-close-btn:hover{background:rgba(255,255,255,.32)}
+.wa-close-btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+.wa-body{padding:16px}
+.wa-chat-bubble{background:#fff;padding:12px 14px;border-radius:8px;border-top-left-radius:2px;
+  margin-bottom:16px;font-size:.9rem;color:#111b21;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.wa-chat-bubble p + p{margin-top:.4rem}
+.wa-chat-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:44px;
+  background:#25d366;color:#fff;text-align:center;padding:12px;border-radius:24px;font-weight:700;font-size:.92rem}
+.wa-chat-btn:hover{background:#1eb85a}
+.wa-chat-btn:focus-visible{outline:3px solid var(--color-ink-primary);outline-offset:2px}
+.wa-footer{text-align:center;margin-top:12px;font-size:.75rem;color:#888}
+
+.wa-launcher{display:flex;align-items:center;gap:8px;justify-content:flex-end}
+.wa-badge{background:#fff;color:var(--color-ink-primary);padding:7px 13px;border-radius:20px;
+  font-size:.85rem;font-weight:600;white-space:nowrap;box-shadow:0 2px 10px rgba(17,34,80,.14);
+  border:1px solid var(--color-border)}
+.wa-icon-btn{background:#25d366;border:none;width:52px;height:52px;flex:none;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);transition:var(--transition-fast)}
+.wa-icon-btn:hover{background:#1eb85a;transform:translateY(-2px)}
+.wa-icon-btn:focus-visible{outline:3px solid var(--color-ink-primary);outline-offset:3px}
+.wa-icon-btn svg{width:26px;height:26px}
+
+html[data-theme="night"] .wa-card{background:#131b26}
+html[data-theme="night"] .wa-chat-bubble{background:#1d2733;color:#e6edf3;box-shadow:none}
+html[data-theme="night"] .wa-badge{background:var(--color-surface);border-color:var(--color-border);color:var(--color-ink-primary)}
+
+@media(max-width:768px){
+  .wa-widget-container{right:14px;bottom:14px}
+  /* The greeting pill eats width the launcher needs on a phone; the button alone
+     is already a recognised affordance. */
+  .wa-badge{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .wa-card{transition:none}
+  .wa-icon-btn:hover{transform:none}
 }
 
 .modal-bg{display:none;position:fixed;inset:0;z-index:300;background:rgba(17,34,80,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px}
@@ -897,3 +947,27 @@ html[data-theme="night"] .promo-pop{box-shadow:0 0 26px rgba(0,242,254,.16)}
   .promo-dot,.promo-pop::after{animation:none}
   .promo-pop::after{opacity:.5}
 }
+
+/* ---- Embedded Google Calendar scheduler ----
+   Same constraint as the interest form: a cross-origin frame can't report its
+   own height, so the frame gets a fixed height per breakpoint. The scheduler
+   stacks its day/time columns on narrow screens, so it needs more room there. */
+.sched-embed{width:100%;max-width:860px;margin:0 auto;
+  background:var(--color-surface);border:1px solid var(--color-border);
+  border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-subtle)}
+.sched-embed iframe{display:block;width:100%;height:640px;border:0}
+@media(max-width:768px){
+  .sched-embed{border-radius:var(--radius-md)}
+  .sched-embed iframe{height:760px}
+}
+
+/* Paired CTAs — stack on a phone so neither button gets squeezed. */
+.contact-actions,.interest-cta-actions{display:flex;flex-wrap:wrap;gap:10px;flex:none}
+@media(max-width:768px){
+  .contact-actions,.interest-cta-actions{width:100%}
+  .contact-actions .btn,.interest-cta-actions .btn{width:100%;justify-content:center}
+}
+
+/* The chat card and the offer card share the bottom-right corner on a phone.
+   Opening the chat wins; the offer nudge steps aside until it closes. */
+.promo-pop.is-suppressed{opacity:0;visibility:hidden;pointer-events:none}
